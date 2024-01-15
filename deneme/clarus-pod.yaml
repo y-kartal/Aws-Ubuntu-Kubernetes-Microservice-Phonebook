@@ -10,11 +10,19 @@ spec:
       persistentVolumeClaim:
         claimName: clarus-pv-claim
   containers:
-    - name: clarus-pv-container
-      image: nginx
-      ports:
-        - containerPort: 80
-          name: "http-server"
-      volumeMounts:
-        - mountPath: "/usr/share/nginx/html"
-          name: clarus-pv-storage
+  - image: mysql:5.7
+    name: msql-db
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: R1234r
+    - name: MYSQL_DATABASE
+      value: phonebook
+    - name: MYSQL_USER
+      value: clarus
+    - name: MYSQL_PASSWORD
+      value: Clarusway_1
+    ports:
+    - containerPort: 3306
+    volumeMounts:
+      - mountPath: "/var/lib/mysql"
+        name: clarus-pv-storage
