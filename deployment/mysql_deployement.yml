@@ -15,7 +15,7 @@ spec:
       volumes:
         - name: clarus-pv-storage
           persistentVolumeClaim:
-            claimName: proje-pv-vol
+            claimName: pv-claim-1
       containers:
       - image: mysql:5.7
         name: msql-db
@@ -45,4 +45,4 @@ spec:
         volumeMounts:
         - mountPath: "/var/lib/mysql"
           name: clarus-pv-storage
-          resourse:{}
+        resources: {}
